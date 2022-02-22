@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // js 변수의 유효 범위 - 함수 블록(스코프)
+        // function aaa() {
+        //     var x = 1;
+        // }
+        // console.log(x);
+        if(true) {
+            var x = 100;
+        }
+        console.log(x);
+        if(true) {
+            var num1 = 20;
+        }
+        console.log(num1); // js의 var변수의 범위는 함수기 때문에 20
+        // 함수 스코프
+        var num2 = 100;
+        function add() {
+            var num2 = 200; // 함수의 실행이 끝나면 함수 안의 변수는 사라진다.
+        }
+        add();
+        console.log(num2); // 100
+        // let 변수의 범위 - 블록 스코프
+        let num3 = 100;
+        if(num3 === 100) {
+            let num3 = 200; // if문을 벗어나면 사라진다.
+        }
+        console.log(num3); // 100 
+        let num4 = 100;
+        function add2() {
+            let num4 = 200; // 함수를 벗어나면 사라진다.
+        }
+        add2();
+        console.log(num4); // 100
+    </script>
+
+</body>
+</html>

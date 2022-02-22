@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // js의 객체 표기법
+        var person = {name : '홍길동', age : 20, inter : [1, 2, 3]};
+        console.log(person);
+        // 객체 안에 값을 사용하는 방법 1st
+        // console.log(person.name);
+        // console.log(person.age);
+        // console.log(person.inter);
+        // console.log(person.inter[0]);
+        // console.log(person.inter[1]);
+        // console.log(person.inter[2]);
+        // 객체 안에 값을 사용하는 방법 2nd
+        console.log(person["name"]);
+        console.log(person["age"]);
+        console.log(person["inter"]);
+        console.log(person["inter"][0]);
+        console.log(person["inter"][1]);
+        console.log(person["inter"][2]);
+    </script>
+
+</body>
+</html>
