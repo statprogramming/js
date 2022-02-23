@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 다음 radio버튼을 클릭했을 때 동의했습니다의 경고창을 띄우고 value값을 확인하세요 -->
+    <input type="checkbox" value="1" onclick="check(this);">조항1
+    <input type="checkbox" value="2" onclick="check(this);">조항2
+    <input type="checkbox" value="3" onclick="check(this);">조항3
+    <input type="checkbox" value="4" onclick="check(this);">조항4
+    <script>
+        function check(x) {
+            alert(x.value + "조항에 동의했습니다");
+            console.log(x.value);
+        }
+    </script>
+    <hr>
+    <!-- 2. 다음 버튼을 클릭했을 때 input태그의 공백여부, 체크여부를 확인하세요-->
+    ID:<input type="input" id="id">
+    기억하기<input type="checkbox" id="remember">
+    <button type="button" id="check2">확인</button>
+    <script>    
+        var check2 = document.getElementById("check2"); 
+        check2.addEventListener("click", function() {
+            var id = document.getElementById("id");
+            var remember = document.getElementById("remember");
+            console.log(id.value); // 값의 여부
+            console.log(remember.checked); // checked
+    });
+    </script>
+</body>
+</html>

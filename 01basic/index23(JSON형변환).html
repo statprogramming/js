@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 스크립트에서 원격에 있는 데이터를 가져오거나 보낼 수 있는데, 문자열의 형식으로 변경할 필요가 있다.
+        var data = [
+            {id : 1, title : "hi", content : "쀍!"},
+            {id : 2, title : "bye", content : "헑!"},
+            {id : 3, title : "hello", content : "힣!"},
+        ];
+        // JSON형을 문자열로 형변환
+        var str = JSON.stringify(data);
+        console.log(str);
+        // 문자열을 JSON형으로 형변환
+        var obj = JSON.parse(str);
+        console.log(obj);
+        // 단, 문자열을 JSON형식으로 변경할 때 반드시 지켜야 할 규칙이 있다. key, value를 ""로 묶어줘야 한다.
+        // var test = JSON.parse("{id : \"aaa123\")"); // 에러
+        var test = JSON.parse("{\"id\" : \"aaa123\"}");
+        console.log(test);
+    </script>
+
+</body>
+</html>

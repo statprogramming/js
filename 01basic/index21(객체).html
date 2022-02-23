@@ -26,6 +26,49 @@
         console.log(person["inter"][0]);
         console.log(person["inter"][1]);
         console.log(person["inter"][2]);
+        console.log("------------------------------------");
+        var exam = {math : 80, kor : 70, eng : 90};
+        var nam = {name : "홍길자", exam : exam};
+        console.log(nam);
+        console.log(nam.name); // nam["name"]
+        console.log(nam.exam.math); // nam["exam"]["math"];
+        console.log("--------------------------------------");
+        // 배열 안에 객체
+        var arr = [
+            {id : 1, title : "aaa", content : "헐"}, 
+            {id : 2, title : "bbb", content : "헑"}, 
+            {id : 3, title : "ccc", content : "헣"},
+        ]; 
+        console.log(arr);
+        console.log(arr[0].title); // arr[0]["title"]
+        console.log(arr[0].id); // arr[0]["id"]
+        console.log(arr[0].content);
+        console.log("---------------------------------------");
+        // 반복문을 이용해서 각각의 요소를 출력하고, subject는 중첩 반복문으로 요소를 전부 출력해
+        var arr2 = [
+            {
+                name:"홍길동",
+                age:20,
+                subject:["자바", "JSP", "SPRING"],
+                birth:20200101
+            },
+            {
+                name:"이순신",
+                age:30,
+                subject:["CSS", "SCRIPT"],
+                birth:20200202
+            }
+        ];
+        for(var i = 0; i < arr2.length; i++) {
+            console.log(arr2[i].name);
+            console.log(arr2[i].age);
+            for(var j = 0; j < arr2[i].subject.length; j++) {
+                console.log(arr2[i].subject[j]);
+            }
+            console.log(arr2[i].birth);
+        }
+        var x = "{\"key\" : \"a\"}";
+        console.log(x);
     </script>
 
 </body>
