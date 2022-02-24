@@ -11,7 +11,7 @@
         // 위쪽
         // 확인창은 - confirm("질문") - 예) 클릭시, true, 아니오 클릭시 false 반환
         // location.href = "경로";
-        function naver() {
+        /* function naver() {
             if(confirm("네이버로 이동하시겠습니까?")) {
                 location.href = "http://naver.com"; // 해당 페이지로 이동
             } 
@@ -20,10 +20,26 @@
             if(confirm("구글로 이동하시겠습니까?")) {
                 location.href = "http://google.com"; // 해당 페이지로 이동
             } 
-        }
+        } */
+        window.onload = function() {
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            // btn1 이벤트 
+            btn1.onclick = function() {
+                if(confirm("이동하시겠습니까?")) {
+                    location.href="https://www.naver.com"; // 경로로 이동
+                }
+            }
+            // btn2 이벤트
+            btn2.onclick = function() {
+                if(confirm("이동하시겠습니까?")) {
+                    location.href="https://www.google.com"; // 경로로 이동
+                }
+            }
+        }    
     </script>
-    <h3>퀴즈 02</h3>
-    <button id="btn1", button onclick="naver()">네이버로 이동</button>
-    <button id="btn2", button onclick="google()">구글로 이동</button>
+    <h3>이벤트는 각각</h3>
+    <button id="btn1">네이버로 이동</button>
+    <button id="btn2">구글로 이동</button>
 </body>
 </html>

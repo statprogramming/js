@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="check1">쿼리 셀렉터</button>
+    <div class="box1">
+        <ul>
+            <li>안녕</li>
+            <li>hello</li>
+            <li>듕국말</li>
+        </ul>
+    </div>
+    <script>
+        var check1 = document.querySelector("#check1"); // css 문법으로 선택
+        check1.onclick = function() {
+            var li = document.querySelector(".box1 > ul > li"); // css 문법으로 선택(1개만 선택함 - 단일 선택)
+            console.log(li);
+            var list = document.querySelectorAll(".box1 > ul > li");
+            console.log(list);
+            for(var i = 0; i < list.length; i++) {
+                console.log(list[i]);
+            }
+        }
+    </script>
+    <hr>
+    <h3>간단한 실습</h3>
+    <input type="checkbox" name="test" class="test" value="1">1
+    <input type="checkbox" name="test" class="test" value="2">2
+    <input type="checkbox" name="test" class="test" value="3">3
+    <input type="checkbox" name="test" class="test" value="4">4
+    <button class="btn">체크박스 선택 버튼</button>
+    <script>
+        // 버튼 클릭시 name='test'인 태그를 querySelectorAll로 선택해
+        var btn = document.querySelector(".btn");
+        btn.onclick = function() {
+            var arr = new Array();
+            var list = document.querySelectorAll("input[name='test']");
+            for(var i = 0; i < list.length; i++) {
+                if(list[i].checked == true) {
+                    arr.push(list[i]);
+                }
+            }
+            console.log(arr);
+        }
+    </script>
+</body>
+</html>

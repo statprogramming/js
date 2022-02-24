@@ -11,7 +11,10 @@
         // onload - 페이지의 로드가 끝난 후에 실행하라(단, onload 이벤트는 페이지마다 1개만 사용할 수 있다.)
         window.onload = function() {// java의 Object 객체, js의 최상위 객체
             var btn = document.getElementById("btn");
-            console.log(btn);
+            // console.log(btn);
+            btn.onclick = function() {
+                alert(11);
+            }
         }
     </script>
     <button type="button" id="btn">온로드란?</button>
