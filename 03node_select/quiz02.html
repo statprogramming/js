@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h3>css 스타일 변경하기</h3>
+        <img src="1.jpg" width="500" class="img" style="border : 5px solid #000;"><br>
+        <select class="select">
+            <option value="1.jpg">봄</option>
+            <option value="2.jpg">여름</option>
+            <option value="3.jpg">가을</option>
+            <option value="4.jpg">겨울</option>
+        </select>
+        <label>색상 변경하기:</label>
+        <input type="color" class="input">
+        <br>
+    </section>
+    <script>
+        var select = document.querySelector(".select");
+        var input = document.querySelector(".input");
+        var img = document.querySelector(".img");
+        select.onchange = function() { // value가 변경될 때 동작
+            img.src = select.value;
+        }
+        input.onchange = function() {
+            img.style.borderColor = input.value;
+        }
+    </script>
+</body>
+</html>
