@@ -22,7 +22,7 @@
         var obj = JSON.parse(str);
         console.log(obj);
         // 단, 문자열을 JSON형식으로 변경할 때 반드시 지켜야 할 규칙이 있다. key, value를 ""로 묶어줘야 한다.
-        // var test = JSON.parse("{id : \"aaa123\")"); // 에러
+        // var test = JSON.parse("{id : \"aaa123\"}"); // 에러
         var test = JSON.parse("{\"id\" : \"aaa123\"}");
         console.log(test);
     </script>
