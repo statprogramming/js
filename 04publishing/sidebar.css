@@ -14,7 +14,7 @@
     margin-top : 50px;
 }
 .side .sidenav li {
-    width : 100px;
+    width : 100%;
 }
 .side .sidenav li a {
    display : block;
@@ -23,13 +23,16 @@
    line-height : 30px;
    color : #818181; 
    text-decoration : none;
-   padding : 5px 0 5px 10px; /* 위 오른쪽 아래 왼쪽 */
-   box-sizing : border-box;
+   padding : 5px 0px 5px 0px; /* 위 오른쪽 아래 왼쪽 */
    overflow : hidden; /* 넘치는 글자에 대해서 숨긴다 */
+   box-sizing : border-box;
 }
 .side .sidenav li a:hover {
     background-color : #00acac;
     color : #fff;
+}    
+.side .sidenav li a span {
+    padding-left : 20px;
 }
 .menuBtn {
     display : block;
