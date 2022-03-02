@@ -20,7 +20,7 @@
             <th>이름</th>
             <th>내용</th>
         </thead>
-        <tbody>
+        <tbody class="table">
             <tr>
                 <td>
                     <button type="button" onclick="down(this)">▽</button>
@@ -71,12 +71,47 @@
     <script>
         function down(node) {
             console.dir(node);
-            console.log(node.parentElement); // 부모노드 선택(엘리먼트 형식으로 선택)
-            console.log(node.parentNode); // 부모노드 선택(텍스트, 주석, 엘리먼트 형식으로 선택)
-            console.log(node.nextElementSibling); // 다음 형제 노드
-            console.log(node.previousElementSibling); // 이전 형제 노드
-            console.log(node.firstElementChild); // 첫번째 자식 요소(지금은 x)
-            console.log(node.lastElementChild); // 마지막 자식 요소(지금은 x)
+            // console.log(node.parentElement); // 부모노드 선택(엘리먼트 형식으로 선택)
+            // console.log(node.parentNode); // 부모노드 선택(텍스트, 주석, 엘리먼트 형식으로 선택)
+            // console.log(node.nextElementSibling); // 다음 형제 노드
+            // console.log(node.previousElementSibling); // 이전 형제 노드
+            // console.log(node.firstElementChild); // 첫번째 자식 요소(지금은 x)
+            // console.log(node.lastElementChild); // 마지막 자식 요소(지금은 x)
+            // 클릭한 버튼의 tr태그
+            var current = node.parentElement.parentElement;
+            var next = current.nextElementSibling;
+            // console.log(current);
+            // console.log(next);
+            // 마지막 행이라면 종료
+            if(next == null) {
+                alert("마지막 행입니다");
+                return;
+            }
+            // insertBefore(삽입 노드, 기준 노드); // 기준 노드 앞에 삽입 노드를 추가
+            var table = document.querySelector(".table");
+            table.insertBefore(next, current);
+        }
+        // up버튼 - insertBefore를 이용해서 처리
+        function up(node) {
+            console.dir(node);
+            // console.log(node.parentElement); // 부모노드 선택(엘리먼트 형식으로 선택)
+            // console.log(node.parentNode); // 부모노드 선택(텍스트, 주석, 엘리먼트 형식으로 선택)
+            // console.log(node.nextElementSibling); // 다음 형제 노드
+            // console.log(node.previousElementSibling); // 이전 형제 노드
+            // console.log(node.firstElementChild); // 첫번째 자식 요소(지금은 x)
+            // console.log(node.lastElementChild); // 마지막 자식 요소(지금은 x)
+            // 클릭한 버튼의 tr태그
+            var current = node.parentElement.parentElement; // tr
+            var previous = current.previousElementSibling;
+            // console.log(current, previous);
+            // 첫번째 행이라면 종료
+            if(previous == null) {
+                alert("첫번째 행입니다");
+                return;
+            }
+            // insertBefore(삽입 노드, 기준 노드); // 기준 노드 앞에 삽입 노드를 추가
+            var table = document.querySelector(".table");
+            table.insertBefore(current, previous);
         }
     </script>
 </body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" class="btn btn-default" id="btn">클래스속성 제어하기</button>
+    <script>
+        var btn = document.getElementById("btn");
+        // console.log(btn.type);
+        // console.log(btn.id);
+        // console.log(btn.class); // class는 키워드라서 접근 불가
+        // 태그의 클래스 이름은 className, classList
+        console.dir(btn);
+        console.log(btn.className); // 클래스의 전체 이름
+        console.log(btn.classList); // 클래스의 이름을 배열로 얻는다
+        // btn.className = "xxxx";
+        btn.classList.add("xxxx"); // 클래스 이름을 추가한다.
+        btn.classList.remove("btn"); // 클래스 이름을 삭제한다.
+        console.log(btn.classList.contains("btn")); // 클래스 이름의 포함 여부를 확인한다.
+        btn.classList.toggle("aaa"); // 없다면 추가, 있다면 삭제
+    </script>
+</body>
+</html>
