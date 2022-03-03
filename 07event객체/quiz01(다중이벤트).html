@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul > li {
+            display : inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h3>다중 이벤트 처리</h3>
+    <div> 
+        <ul class="images">
+            <li class="list"><img src="img/1.jpg" width="100"></li>
+            <li class="list"><img src="img/2.jpg" width="100"></li>
+            <li class="list"><img src="img/3.jpg" width="100"></li>
+            <li class="list"><img src="img/4.jpg" width="100"></li>
+        </ul>
+        결과 :
+        <div class="result">
+            <img src="img/1.jpg" width="400" alt="대표 이미지">
+        </div>
+    </div>
+    <script>
+        var result = document.querySelector(".result > img");
+        var images = document.querySelectorAll(".images > li > img");
+        for(var i = 0; i < images.length; i++) {
+            // images[i].onclick = function() {
+            //     // console.log(event.target);
+            //     result.src = event.target.src;         
+            // }
+            images[i].addEventListener("click", handleImg);            
+        }
+        function handleImg() {
+            result.src = event.target.src;
+        }
+    </script>
+</body>
+</html>
