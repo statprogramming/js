@@ -40,6 +40,14 @@
        addRow.onclick = function() {
            // tr 1개, td 4개, input 4개
            var tr = document.createElement("tr");
+           /*
+           var input = document.createElement("input");
+           input.type = "text";
+           input.size = "3";
+           var td = document.createElement("td");
+           td.appendChild(input);
+           tr.appendChild(td);
+           */
            var str = "<input type='text' size='3'>";
            var td = document.createElement("td");
            td.innerHTML = str;

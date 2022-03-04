@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* https://michalsnik.github.io/aos/ */
+        @keyframes fadeIn {
+            from { /* from에서 시작 -> to로 */
+                opacity : 0;
+                margin-left : -100px;
+            } to {
+                opacity : 1;
+                margin-left : 0px;
+            }
+        }
+        .toggle li {display : inline;}
+        .toggle li a {
+            display : inline-block; 
+            padding : 10px; 
+            width : 25%; 
+            text-align : center; 
+            border : 1px solid #777;
+        }
+        .toggle-menu {display : none;}
+        .toggle-menu.active {display : block; animation : fadeIn 0.5s ease-in-out;} /* 이름, 기간, 속도, 딜레이 */
+    </style>
+</head>
+<body>
+    <section>
+        <ul class="toggle">
+            <li><a href="#" data-id="#toggle1">메뉴1</a></li>
+            <li><a href="#" data-id="#toggle2">메뉴2</a></li>
+            <li><a href="#" data-id="#toggle3">메뉴3</a></li>
+        </ul>
+        <div>
+            <div class="toggle-menu active" id="toggle1">메뉴1</div>
+            <div class="toggle-menu" id="toggle2">메뉴2</div>
+            <div class="toggle-menu" id="toggle3">메뉴3</div>
+        </div>
+    </section>
+    <script>
+        var toggle = document.querySelector(".toggle");
+        toggle.onclick = function() {
+            event.preventDefault(); // A이벤트 중단
+            if(event.target.tagName != "A") return;
+            // console.log(event.target);
+            // 1. toggle-menu가 가지고 있는 active클래스를 일단 전부 제거, (반복문) - 클래스 이름을 제거하는 remove("active")
+            var toggles = document.querySelectorAll(".toggle-menu");
+            for(var i = 0; i < toggles.length; i++) {
+                // console.log(toggles[i]);
+                // console.log(toggles[i].classList);
+                toggles[i].classList.remove("active");
+            }
+            // 2. 클릭한 대상의 data-id값을 얻는다.
+            // console.log(event.target.dataset);
+            var target = event.target.dataset.id;
+
+            // 3. 2번에서 얻은 아이디를 가지고 있는 태그에 add("active")
+            document.querySelector(target).classList.add("active"); 
+        }
+    </script>
+</body>
+</html>
