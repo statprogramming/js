@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-banner {text-align : center;}
+        .main-banner img {display : none; position : relative; animation : topIn 0.5s linear;}
+        @keyframes topIn {
+            from {
+                opacity : 0;
+                top : -50px;
+            } to {
+                opacity : 1;
+                top : 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 인터벌 안에서 디스플레이를 변경 -->
+    <div class="main-banner">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+    </div>
+    <script>
+        var stop;
+        var index = 0;
+        function changeBanner() {
+            // main-banner의 자식 접근
+            var banner = document.querySelector(".main-banner");
+            // console.log(banner.children[0]);
+            // console.log(banner.children[1]);
+            // console.log(banner.children[2]);
+            banner.children[index].style.display = "inline";
+            index++;
+            // 인터벌 중단(3까지 증가하면 중단)
+            if(index == banner.children.length) clearInterval(stop);
+        }
+        (function() {
+            stop = setInterval(changeBanner, 500); // 0.5초마다 인터벌
+        })();
+    </script>
+</body>
+</html>

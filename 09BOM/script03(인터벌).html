@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {padding : 0; margin : 0;}
+        @keyframes fadeIn {
+            from {
+                opacity : 0;
+            } to {
+                opacity : 1;
+            }
+        }
+        .bgImg {animation : fadeIn 0.5s ease-in-out;}
+    </style>
+</head>
+<body>
+    <article class="slide">
+        <img src="img/1.jpg" class="bgImg">
+    </article>
+    <script>
+        var num = 1;
+        function changeImg() {
+            // 이미지 태그 생성
+            var img = document.createElement("img");
+            img.src = "img/" + ++num + ".jpg";
+            img.classList.add("bgImg"); // 애니메이션클래스 추가
+            // slide의 자식 삭제
+            var slide = document.querySelector(".slide");
+            slide.firstElementChild.remove();
+            // slide의 자식 추가
+            slide.appendChild(img);
+            // 1로 초기화
+            if(num === 3) num = 0;
+        }
+        (function() {
+            setInterval(changeImg, 2000); // 2초마다 인터벌
+        })();
+    </script>
+</body>
+</html>

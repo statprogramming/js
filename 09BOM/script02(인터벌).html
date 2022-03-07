@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="stopInterval">인터벌 중지</button>
+    <script>
+        // window 객체 안에는 alert(), confirm()
+        // window.alert("경고창");
+        // var bool = window.confirm("확인창");
+        // 인터벌(실행함수, 밀리초)
+        var stop = setInterval(function() {
+            console.log(1);
+        }, 1000);
+        // 중지 버튼
+        var stopInterval = document.getElementById("stopInterval");
+        stopInterval.onclick = function() {
+            clearInterval(stop);
+        }
+    </script>
+</body>
+</html>

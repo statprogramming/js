@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 내비게이터객체는 브라우저에 대한 정보를 제공한다
+        // console.dir(navigator);
+        var browser = navigator.userAgent.toLowerCase();
+        console.log(browser);
+        console.log(browser.indexOf("chrome")); // 문자가 있다면 위치, 없다면 -1을 반환
+        if(browser.indexOf("chrome") != -1) {
+            // 크롬 디자인
+            console.log("크롬");
+            // 디자인 동적 로드
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "style.css";
+            document.head.appendChild(link);
+        } else if(browser.indexOf("firefox") != -1) {
+            // 파이어폭스
+        }
+    </script>
+</body>
+</html>

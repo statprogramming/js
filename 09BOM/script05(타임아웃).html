@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>5초 뒤에 경고창이 실행됩니다</h3>
+    <h3>이 버튼을 누르면 실행되지 않습니다.</h3>
+    <button type="button" id="stopTimeout">타임아웃 중지</button>
+    <script>
+        // var stop = setTimeout(function() {
+        //     alert("5초 뒤 실행된 경고창");
+        // }, 5000);
+        // // 중지
+        // var stopTimeout = document.getElementById("stopTimeout");
+        // stopTimeout.onclick = function() {
+        //     clearTimeout(stop); // 타임아웃 중지
+        // }
+        // test함수에는 매개 변수를 줄 수 있는가?
+        function test(text) {
+            return function() { // return function(text) = 잘못된 것이라 주의!
+                alert("전달된 매개 변수:" + text);
+            }
+        }
+        setTimeout(test('xx'), 5000);
+    </script>
+</body>
+</html>
