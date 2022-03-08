@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 콜백 함수란? 동기적 콜백
+        // function callbackFunc(success) {
+        //     // 함수를 매개변수로 받는다.
+        //     success(10);
+        // }
+        // callbackFunc(function(a) {
+        //     console.log("동기적 콜백");
+        //     console.log(a); // 10
+        // }); 
+        // // 비동기적 콜백 - 순서를 지키지 않고 결과를 반환받는다.
+        // function asyncFunc(success) {
+        //     setTimeout(success, 2000); // 2초 뒤에 실행
+        // }
+        // console.log(1);
+        // asyncFunc(function() {
+        //     console.log(2);
+        // });
+        // console.log(3);
+        // console.dir(navigator);
+        // 성공시 콜백함수 첫번째 매개변수에 실행결과에 대한 정보를 넣어준다
+        function success(position) {
+            console.log(position);
+            console.log(position.timestamp); // 접근한 시간
+            console.log(position.coords.latitude); // 위도
+            console.log(position.coords.longitude); // 경도
+        }
+        // 실패시 콜백함수 첫번째 매개변수의 실패에 대한 결과를 넣어준다.
+        function fail(error) {
+            alert("위치정보를 받는 데 실패했습니다");
+        }
+        navigator.geolocation.getCurrentPosition(success, fail);
+    </script>
+</body>
+</html>

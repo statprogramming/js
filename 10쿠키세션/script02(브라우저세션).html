@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        localStorage와 sessionStorage는 브라우저에 저장하는 세션의 개념<br>
+        키=값 형태의 문자열로 저장한다.<br>
+        sessionStorage는 브라우저를 종료하면 값이 사라진다<br>
+        쿠키와의 차이점<br>
+        쿠키는 서버간 전송이 가능하지만, 스토리지는 브라우저에서만 사용 가능하다.<br>
+    </p>
+    <button type="button" id="createSession">세션 생성하기</button>
+    <button type="button" id="removeSession">세션 삭제하기</button>
+    <script>
+        // setItem("키", "값") - 저장
+        // getItem("키") - 키에 해당하는 값을 얻는다.
+        // removeItem("키") - 키에 해당하는 값을 삭제한다.
+        // clear() - 전부 삭제 
+        var arr = ["홍", "길", "동"];
+        var createSession = document.getElementById("createSession");
+        createSession.onclick = function() {
+            localStorage.setItem("aaa", "홍길동"); // (키, 값)
+            localStorage.setItem("bbb", "20");
+            localStorage.setItem("ccc", JSON.stringify(arr)); // 배열 또는 객체는 문자열로 변환해 저장 
+            var aaa = localStorage.getItem("aaa");
+            var bbb = localStorage.getItem("bbb");
+            var ccc = JSON.parse(localStorage.getItem("ccc")); // 값을 얻을 때 배열형으로 다시 형 변환
+            console.log(aaa);
+            console.log(bbb);
+            console.log(ccc);
+        }
+        // 삭제 기능
+        var removeSession = document.getElementById("removeSession");
+        removeSession.onclick = function() {
+            localStorage.removeItem("aaa"); // 삭제
+            var aaa = localStorage.getItem("aaa");
+            console.log(aaa); // null
+        }
+    </script>
+</body>
+</html>
