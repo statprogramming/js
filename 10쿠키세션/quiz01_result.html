@@ -14,6 +14,24 @@
     <script>
         // 1. 로컬스토리지 값을 가지고 온다.
         // 2. 가지고 온 값을 이미지로 생성해서 cartList 아래에 appendChild로 추가
+        var cartList = document.querySelector(".cartList");
+        window.onload = function() {
+            var arr = JSON.parse(localStorage.getItem("like"));
+            console.log(arr);
+            // 값이 있는 경우
+            if(arr != null) {
+                for(var i = 0; i < arr.length; i++) {
+                    var img = document.createElement("img");
+                    img.src = arr[i];
+                    img.style.width = "300px";
+                    cartList.appendChild(img);
+                }
+            } else {
+                var div = document.createElement("div");
+                div.innerHTML = "최신에 확인한 목록이 없습니다";
+                cartList.appendChild(div);
+            }
+        }
     </script>
 </body>
 </html>
