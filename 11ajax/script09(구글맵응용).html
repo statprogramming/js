@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height : 500px;
+            width : 500px;
+            margin : 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>구글맵 마커 활용하기</h3>
+    <button type="button" class="next">다음 데이터 출력하기</button>
+    <!-- 맵을 그리는 곳 -->
+    <div id="map"></div>
+    <script>
+        // 현재 위칫값
+        var lat;
+        var lng;
+        var pageNum = 1;
+        // 버튼을 누를 때 다음 데이터를 가져오는 이벤트
+        var next = document.querySelector(".next");
+        next.onclick = function() {
+            getAjax(pageNum);
+            pageNum++;
+        }
+        function getAjax(page) {
+            var end = page * 100; // 1 * 10
+            var start = end - 99; //
+            fetch("http://openapi.seoul.go.kr:8088/635a5369536c626a313032566a744e6b/json/TbPublicWifiInfo/" + start + "/" + end)
+                .then(function (response) {
+                    if (response.status != 200) {
+                        alert("요청에 실패했습니다");
+                    } else {
+                        return response.json();
+                    }
+                }).then(function (data) {
+                    console.log(data);
+                    // 3. 구글맵 오픈
+                    var mapOption = {
+                        center : {lat : lat, lng : lng}, /* 왼쪽은 키, 우측은 전역값*/
+                        zoom : 10
+                    }
+                    map = new google.maps.Map(document.getElementById("map"), mapOption);
+                    // 4. 나의 위치를 마커로 출력
+                    const svgMarker = {
+                        path : "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+                        fillColor : "blue",
+                        fillOpacity : 0.6,
+                        strokeWeight : 0,
+                        rotation : 0,
+                        scale : 2,
+                        anchor : new google.maps.Point(15, 30),
+                    };
+                    new google.maps.Marker({
+                        position : {lat : lat, lng : lng},
+                        icon : svgMarker,
+                        map : map,
+                        title : "현재 위치"
+                    });
+                    // 5. fetch로 받아온 데이터 처리
+                    var wifi = data.TbPublicWifiInfo.row;
+                    for(var i = 0; i < wifi.length; i++) {
+                        var x = wifi[i].LNT;
+                        var y = wifi[i].LAT;
+                        var tit = wifi[i].X_SWIFI_ADRES1;
+                        console.log(x, y);
+                        // 마킹
+                        new google.maps.Marker({
+                            position : {lat : parseFloat(x), lng : parseFloat(y)},
+                            map : map,
+                            title : tit
+                        });
+                    }
+                });
+            }
+            function initMap() {
+                // 1. 사용자 정보를 받는다.
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    lat = position.coords.latitude;
+                    lng = position.coords.longitude;
+                    console.log(lat, lng);
+                    // 2. fetch로 데이터를 받아온다
+                    getAjax(pageNum);
+                    pageNum++;
+                }, function(error) {
+                    alert("브라우저에서 위치정보 조회를 승인해야 합니다");
+                });
+            }
+    </script>
+    <!-- 1. SDK 로드 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnziC5O8iIbICslg_Od67wdCkU-JqEf_k&callback=initMap&v=weekly" async></script>
+</body>
+</html>

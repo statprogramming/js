@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height : 500px;
+            width : 500px;
+            margin : 0 auto;
+        }   
+        /* html,
+        body {
+        height : 100%;
+        margin : 0;
+        padding : 0;
+        } */
+    </style>
+</head>
+<body>
+    <!-- 맵을 그리는 곳 -->
+    <div id="map"></div>
+    <script>
+        // 3. 맵 초기화함수
+        let map;
+        // 위도 37.498095, 경도 127.027610
+        function initMap() {
+            // 5. 위도경도
+            var myLatLng = {lat : 37.498095, lng : 127.027610}; // 위도경도값
+            map = new google.maps.Map(document.getElementById("map"), {
+                center : myLatLng,
+                zoom : 8,
+            });
+            // var mapOption = {
+            //     center : {lat : lat, lng: lng}, /* 왼쪽은 키, 우측은 전역값 */ 
+            //     zoom : 15
+            // }
+            // map = new google.maps.Map(document.getElementById("map"), mapOption);
+            // 4. 마커 기능
+            new google.maps.Marker({
+                position : myLatLng,
+                map,
+                title : "Hello World",
+            });
+        }
+    </script>
+    <!-- 1. SDK 로드 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnziC5O8iIbICslg_Od67wdCkU-JqEf_k&callback=initMap&v=weekly" async></script>
+</body>
+</html>
